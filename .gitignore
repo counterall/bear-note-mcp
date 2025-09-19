@@ -1,0 +1,11 @@
+# Ignore build output
+dist
+
+# Ignore node modules
+node_modules
+
+# Ignore VS Code settings
+.vscode/
+
+# Ignore GitHub workflows and configs
+.github/

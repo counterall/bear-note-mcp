@@ -1,0 +1,20 @@
+{
+  "name": "bear-note-mcp",
+  "version": "1.0.0",
+  "description": "Mcp server to manipulate bear note app on macOS",
+  "author": "Kan Cong",
+  "main": "dist/server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.18.1",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^24.5.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
+  }
+}
