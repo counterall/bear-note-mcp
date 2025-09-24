@@ -3,7 +3,7 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { z } from "zod";
 import { exec } from "node:child_process";
 import * as http from "node:http";
-import { URL, URLSearchParams } from "node:url";
+import { URL } from "node:url";
 
 // Helper: open a URL with the system browser (macOS will route bear:// to Bear)
 function openUrl(url: string): Promise<void> {
@@ -101,7 +101,7 @@ server.registerTool(
     inputSchema: {
       title: z.string().optional().describe("The title of the note"),
       text: z.string().optional().describe("The text content of the note"),
-      tags: z.array(z.string()).optional().describe("Array of tags to add to the note"),
+      tags: z.string().optional().describe("comma separated list of tags to add to the note"),
       open_note: z.boolean().default(true).describe("Whether to open the note after creation"),
       edit: z.boolean().default(false).describe("Whether to open the note in edit mode"),
       pin: z.boolean().default(false).describe("Whether to pin the note"),
@@ -119,10 +119,7 @@ server.registerTool(
       const queryParts: string[] = [];
       if (args.title) queryParts.push(`title=${encodeURIComponent(args.title)}`);
       if (args.text) queryParts.push(`text=${encodeURIComponent(args.text)}`);
-      if (args.tags?.length) {
-        const encodedTags = args.tags.map(tag => encodeURIComponent(tag)).join(",");
-        queryParts.push(`tags=${encodedTags}`);
-      }
+      if (args.tags) queryParts.push(`tags=${encodeURIComponent(args.tags)}`);
       if (!args.open_note) queryParts.push("open_note=no");
       if (args.edit) queryParts.push("edit=yes");
       if (args.pin) queryParts.push("pin=yes");
