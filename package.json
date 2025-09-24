@@ -2,7 +2,10 @@
   "name": "bear-note-mcp",
   "version": "1.0.0",
   "description": "Mcp server to manipulate bear note app on macOS",
-  "author": "Kan Cong",
+  "author": {
+    "name": "Kan Cong",
+    "email": "kcongmj23@gmail.com"
+  },
   "main": "dist/server.js",
   "type": "module",
   "scripts": {
